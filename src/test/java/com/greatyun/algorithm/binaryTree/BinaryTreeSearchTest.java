@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Queue;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,6 +41,7 @@ class BinaryTreeSearchTest {
         assertThat(searchNode.getData()).isEqualTo(node3.getData());
         assertThat(searchNode.getLeft()).isNull();
         assertThat(searchNode.getRight()).isNull();
+
     }
 
 }
