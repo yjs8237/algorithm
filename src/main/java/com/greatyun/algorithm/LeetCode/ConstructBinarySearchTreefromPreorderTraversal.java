@@ -49,7 +49,12 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
     private TreeNode makeLeetTreeLeet(int [] a , int start , int end) {
         if(start > end) return null;
         TreeNode node = new TreeNode(a[start]);
+
         return null;
+
+        //makeLeetTreeLeet(a , start , mid - 1);
+        return node;
+
     }
 
     /**
@@ -66,6 +71,25 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
         node.left = makeTree(a , start , mid - 1);
         node.right = makeTree(a , mid +1  , end);
         return node;
+    }
+
+    public void searchTreeArr(int [] a , int start , int end , int data) {
+        if(start > end) {
+            System.out.println("there is no data");
+            return;
+        }
+        int mid = (start + end) / 2;
+
+        if(a[mid] > data) {
+            // 찾고자 하는 데이터가 더 작은 경우 이진트리의 왼쪽에 해당하다.
+            searchTreeArr(a , start , mid - 1 , data);
+        } else if(a[mid] < data) {
+            // 찾고자 하는 데이터가 더 큰 경우 이진트리의 오른쪽에 해당한다.
+            searchTreeArr(a , mid+1 , end , data);
+        } else {
+            System.out.println("find data success!! data is " + a[mid]);
+        }
+
     }
 
     public void searchTree(TreeNode node , int find) {
@@ -102,11 +126,23 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
         ConstructBinarySearchTreefromPreorderTraversal obj = new ConstructBinarySearchTreefromPreorderTraversal();
         int [] intarr = {8,5,1,7,10,12};
         TreeNode root = obj.makeTree(intarr, 0, intarr.length - 1);
+
         obj.searchTree(root , 10);
         System.out.println("root data : " + root.val);
         System.out.println("root left data : " + root.left.val);
 //        TreeNode treeNode = obj.bstFromPreorder(intarr);
 //        obj.printNode(treeNode);
+      
+      obj.searchTreeArr(intarr , 0 , intarr.length - 1 , 10);
+      
+
+//        obj.searchTree(root , 1);
+
+//        TreeNode treeNode = obj.bstFromPreorder(intarr);
+//        obj.printNode(treeNode);
+
+        
+
 //        obj.searchTree(treeNode , 3);
     }
 
