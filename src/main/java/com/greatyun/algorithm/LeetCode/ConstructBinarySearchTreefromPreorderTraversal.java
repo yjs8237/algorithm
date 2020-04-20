@@ -23,7 +23,6 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
     }
 
     private void makeLeetTree(TreeNode root , int value) {
-
         while(root != null) {
             if(root.val > value) {
                 if(root.left != null) {
@@ -50,10 +49,21 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
     private TreeNode makeLeetTreeLeet(int [] a , int start , int end) {
         if(start > end) return null;
         TreeNode node = new TreeNode(a[start]);
+
+        return null;
+
         //makeLeetTreeLeet(a , start , mid - 1);
         return node;
+
     }
 
+    /**
+     * 이진 트리 생성하기 (파라미터의 배열은 정렬이 되어 있는 상태로 넘어와야 한다 )
+     * @param a
+     * @param start
+     * @param end
+     * @return
+     */
     public TreeNode makeTree(int [] a , int start , int end) {
         if(start > end) return  null;
         int mid = (start + end) / 2;
@@ -116,14 +126,24 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
         ConstructBinarySearchTreefromPreorderTraversal obj = new ConstructBinarySearchTreefromPreorderTraversal();
         int [] intarr = {8,5,1,7,10,12};
         TreeNode root = obj.makeTree(intarr, 0, intarr.length - 1);
+
+        obj.searchTree(root , 10);
+        System.out.println("root data : " + root.val);
+        System.out.println("root left data : " + root.left.val);
+//        TreeNode treeNode = obj.bstFromPreorder(intarr);
+//        obj.printNode(treeNode);
+      
+      obj.searchTreeArr(intarr , 0 , intarr.length - 1 , 10);
+      
+
 //        obj.searchTree(root , 1);
 
 //        TreeNode treeNode = obj.bstFromPreorder(intarr);
 //        obj.printNode(treeNode);
 
-        obj.searchTreeArr(intarr , 0 , intarr.length - 1 , 10);
-//        obj.searchTree(treeNode , 3);
+        
 
+//        obj.searchTree(treeNode , 3);
     }
 
 
