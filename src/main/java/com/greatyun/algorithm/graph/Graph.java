@@ -27,6 +27,7 @@ public class Graph {
     void dfs() {
         dfs(0);
     }
+
     void dfs(int index) {
         Node node = nodes[index];
         Stack<Node> stack = new Stack<Node>();
@@ -42,21 +43,6 @@ public class Graph {
             }
             visit(node1);
         }
-    }
-
-    void dfsR(Node root) {
-        if(root == null) return;
-        root.marked = true;
-        visit(root);
-        for (Node inNode : root.adjacent) {
-            if(!inNode.marked) {
-                dfsR(inNode);
-            }
-        }
-    }
-
-    void bfs() {
-        bfs(0);
     }
 
     void bfs(int index) {
@@ -76,6 +62,26 @@ public class Graph {
             visit(root);
         }
     }
+
+
+
+
+    void dfsR(Node root) {
+        if(root == null) return;
+        root.marked = true;
+        visit(root);
+        for (Node inNode : root.adjacent) {
+            if(!inNode.marked) {
+                dfsR(inNode);
+            }
+        }
+    }
+
+    void bfs() {
+        bfs(0);
+    }
+
+
 
     void visit(Node node) {
         System.out.println("node data : " + node.data);
