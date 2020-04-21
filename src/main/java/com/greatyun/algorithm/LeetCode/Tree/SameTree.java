@@ -1,4 +1,4 @@
-package com.greatyun.algorithm.LeetCode;
+package com.greatyun.algorithm.LeetCode.Tree;
 
 public class SameTree {
 

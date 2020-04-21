@@ -53,7 +53,6 @@ public class ConstructBinarySearchTreefromPreorderTraversal {
         return null;
 
         //makeLeetTreeLeet(a , start , mid - 1);
-        return node;
 
     }
 
