@@ -102,6 +102,27 @@ public class Dfs {
         }
     }
 
+    /**
+     * BFS 구현
+     * @param index
+     */
+    void bfs(int index) {
+        Node root = nodeList.get(index);
+        Queue<Node> queue = new Queue<Node>();
+        queue.enqueue(root);
+        root.isMarked = true;
+        while(!queue.isEmpty()) {
+            Node dequeue = queue.dequeue();
+            for (int i = 0; i < dequeue.adjacent.size(); i++) {
+                Node inNode = (Node) dequeue.adjacent.get(i);
+                if(!inNode.isMarked) {
+                    inNode.isMarked = true;
+                    queue.enqueue(inNode);
+                }
+            }
+            System.out.println("node [" + dequeue.data + "]" );
+        }
+    }
 
     public static void main (String []args) {
         Dfs dfs = new Dfs(4);
@@ -114,8 +135,6 @@ public class Dfs {
         dfs.addNode(3 , 1);
         dfs.addNode(3 , 2);
 //        dfs.searchDFS(0);
-
-
         dfs.searchDfsR(dfs.getRoot());
     }
 
