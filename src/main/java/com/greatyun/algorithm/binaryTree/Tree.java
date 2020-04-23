@@ -18,7 +18,7 @@ public class Tree {
     }
 
     public void makeNode(int data , Node left , Node right) {
-        Node node = new Node();
+        Node node = new Node(data);
         node.setData(data);
         node.setLeft(left);
         node.setRight(right);

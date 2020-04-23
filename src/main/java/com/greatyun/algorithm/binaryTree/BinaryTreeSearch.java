@@ -1,6 +1,7 @@
 package com.greatyun.algorithm.binaryTree;
 
 
+import com.greatyun.algorithm.LeetCode.ConstructBinarySearchTreefromPreorderTraversal;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -19,10 +20,26 @@ public class BinaryTreeSearch {
     }
 
     public Node makeNode(int data , Node left , Node right) {
-        Node node = new Node();
+        Node node = new Node(data);
         node.setData(data);
         node.setLeft(left);
         node.setRight(right);
+        return node;
+    }
+
+    /**
+     * 주어진 정렬이 되어 있는 배열로 이진트리 구성하는 메소드
+     * @param a
+     * @param start
+     * @param end
+     * @return
+     */
+    public Node makeTree(int [] a , int start , int end) {
+        if(start > end) return  null;
+        int mid = (start + end) / 2;
+        Node node = new Node(a[mid]);
+        node.setLeft(makeTree(a , start , mid - 1));
+        node.setRight(makeTree(a , mid +1  , end));
         return node;
     }
 
@@ -49,7 +66,6 @@ public class BinaryTreeSearch {
      */
     private Node search(Node root, int data) {
         if(root == null ) return null;
-
         while(true) {
             if(root.getData() == data) {
                 // 검색 노드 찾음
