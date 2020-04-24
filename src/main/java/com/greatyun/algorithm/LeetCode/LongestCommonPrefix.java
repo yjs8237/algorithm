@@ -3,6 +3,9 @@ package com.greatyun.algorithm.LeetCode;
 import java.util.*;
 
 public class LongestCommonPrefix {
+
+
+
     /**
      * Write a function to find the longest common prefix string amongst an array of strings.
      *
@@ -22,72 +25,43 @@ public class LongestCommonPrefix {
      * All given inputs are in lowercase letters a-z.
      */
 
-    class Data {
-        char character;
-        int count;
-    }
-
     public String longestCommonPrefix(String[] strs) {
-        StringBuilder builder = new StringBuilder();
-
-        HashMap<Character , Integer > map = new HashMap<>();
-
-        LinkedList<Character> linkedList = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-
-        int minValue = Integer.MAX_VALUE;
-        String resultStr = "";
-        for (int i = 0; i < strs.length; i++) {
-            String str = strs[i];
-            char[] charArray = str.toCharArray();
-            boolean isSame = false;
-            for (int j = 0; j < charArray.length; j++) {
-                if(i == 0) {
-                    isSame = true;
-                    linkedList.add(charArray[j]);
-                    resultStr += charArray[j];
-                } else {
-
-                    if(linkedList.contains(charArray[j])) {
-                        isSame = true;
-                    } else {
-                        isSame = false;
-
-                    }
-
-                }
-            }
-            if(!isSame) {
-
-                break;
-            }
-
-        }
+        if(strs.length == 0) return "";
+        if(strs.length == 1) return strs[0];
 
         StringBuilder stringBuilder = new StringBuilder();
-        Set keySet = map.keySet();
-        Iterator iterator = keySet.iterator();
-        int totalCount = 0;
-        while(iterator.hasNext()) {
-            Character key = (Character) iterator.next();
-            Integer count = map.get(key);
-            if(totalCount < count) {
-                stringBuilder.append(key);
-                totalCount = count;
-            }
-            System.out.println("key : " + key +  " , count : " + count + " , result : " + stringBuilder.toString());
+        String firstStr = strs[0];
 
+        for (int i = 0; i < firstStr.length(); i++) {
+            String subStr = firstStr.substring(i , i+1);
+            stringBuilder.append(subStr);
+            int matchCount = 0;
+            for (int j = 1; j < strs.length; j++) {
+                if(strs[j].startsWith(stringBuilder.toString())) {
+                    matchCount++;
+                } else {
+                    stringBuilder.delete(stringBuilder.length()-1 , stringBuilder.length());
+                    break;
+                }
+            }
+            if(matchCount == strs.length - 1) {
+                System.out.println(stringBuilder.toString() + " 여기까지 정답" );
+            } else if(i == 0) {
+                return "";
+            } else {
+                return stringBuilder.toString();
+            }
         }
 
-        System.out.println("min Value : " + minValue);
-
-        return ""resetStr"";
+        return stringBuilder.toString();
     }
 
-
-    public static void main(String [] args) {
+    public static void main(String[] args) {
         LongestCommonPrefix obj = new LongestCommonPrefix();
-        String [] strArr = {"te" , "te" , "tes"};
-        System.out.println("result : " + obj.longestCommonPrefix(strArr));
+
+        String [] arr = {"apcb" , "apb" };
+        System.out.println(obj.longestCommonPrefix(arr));
     }
+
+
 }
