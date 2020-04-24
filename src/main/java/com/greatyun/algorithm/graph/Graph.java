@@ -50,7 +50,6 @@ public class Graph {
         Queue<Node> queue = new Queue<Node>();
         queue.enqueue(root);
         root.marked = true;
-
         while(!queue.isEmpty()) {
             Node dequeue = queue.dequeue();
             for (Node inNode : dequeue.adjacent) {
