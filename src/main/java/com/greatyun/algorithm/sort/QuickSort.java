@@ -33,6 +33,11 @@ public class QuickSort {
         arr[i1] = t;
     }
 
+
+    /**
+     * 정렬되어 있는 array 에서 찾고자 하는 데이터의 index 를 리턴하시오
+     *
+     */
     public int searchValue(int [] arr , int targetValue) {
         return search(arr , 0 , arr.length-1 ,  targetValue);
     }
