@@ -81,4 +81,74 @@ public class BinaryTreeSearch {
         }
     }
 
+    /**
+     * binary Tree 가 유효한지 체크 하는 메소드
+     */
+    private Integer prev_data = Integer.MIN_VALUE;
+    public boolean isValidTree(Node root) {
+        if(root != null) {
+            isValidTree(root.getLeft());
+            if(prev_data > root.getData()) {
+                return false;
+            } else {
+                prev_data = root.getData();
+            }
+            isValidTree(root.getRight());
+        } else {
+            return true;
+        }
+        return true;
+    }
+
+    public boolean isBalanced(Node root) {
+        if(root != null) {
+            isValidTree(root.getLeft());
+            if((prev_data - root.getData()) == -1 || (prev_data - root.getData()) == 1 ) {
+                System.out.println("prev_data [" + prev_data + "] val ["+root.getData() + "]");
+                return false;
+            } else {
+                prev_data = root.getData();
+            }
+            isValidTree(root.getRight());
+        } else {
+            return true;
+        }
+        return true;
+    }
+
+    private int integer = 0;
+    public boolean isBalance(Node root) {
+        if(root != null) {
+            System.out.println(root.getData());
+            isBalance(root.getLeft());
+            isBalance(root.getRight());
+            integer++;
+        }
+        System.out.println("prev_data : "+ integer);
+        return false;
+    }
+
+
+    public static void main(String[] args) {
+
+        Node root = new Node(3);
+        Node node1 = new Node(9);
+        Node node2 = new Node(20);
+        Node node4 = new Node(15);
+        Node node5 = new Node(7);
+        root.setLeft(node1);
+        root.setRight(node2);
+        node2.setLeft(node4);
+        node2.setRight(node5);
+
+        /*
+        Node root = new Node(1);
+        Node node1 = new Node(2);
+        root.setLeft(node1);
+        */
+        BinaryTreeSearch obj = new BinaryTreeSearch();
+
+        System.out.println(obj.isBalance(root));
+    }
+
 }
