@@ -1,8 +1,10 @@
 package com.greatyun.algorithm.LeetCode;
 
-import java.util.HashMap;
+import java.util.*;
 
 public class LongestCommonPrefix {
+
+
 
     /**
      * Write a function to find the longest common prefix string amongst an array of strings.
@@ -60,5 +62,6 @@ public class LongestCommonPrefix {
         String [] arr = {"apcb" , "apb" };
         System.out.println(obj.longestCommonPrefix(arr));
     }
+
 
 }

@@ -5,6 +5,9 @@ import com.greatyun.algorithm.LeetCode.ConstructBinarySearchTreefromPreorderTrav
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 @Slf4j
 public class BinaryTreeSearch {
@@ -81,74 +84,48 @@ public class BinaryTreeSearch {
         }
     }
 
+
     /**
-     * binary Tree 가 유효한지 체크 하는 메소드
+     * 주어진 이진 트리가 이진 검색 트리인지 확인하는 메소드
+     * @param root
+     * @return
      */
-    private Integer prev_data = Integer.MIN_VALUE;
-    public boolean isValidTree(Node root) {
-        if(root != null) {
-            isValidTree(root.getLeft());
-            if(prev_data > root.getData()) {
-                return false;
-            } else {
-                prev_data = root.getData();
-            }
-            isValidTree(root.getRight());
-        } else {
-            return true;
-        }
-        return true;
+    public boolean isBinaryTree(Node root) {
+        return searchInOrder(root);
+
     }
 
-    public boolean isBalanced(Node root) {
+    Integer prev;   // 이진검색 트리의 이전 값을 저장하는 Integer 객체
+    private boolean searchInOrder(Node root) {
         if(root != null) {
-            isValidTree(root.getLeft());
-            if((prev_data - root.getData()) == -1 || (prev_data - root.getData()) == 1 ) {
-                System.out.println("prev_data [" + prev_data + "] val ["+root.getData() + "]");
+            // 재귀 함수 호출 결과가 false 이면 false 를 리턴해서 마무리
+            if(!searchInOrder(root.getLeft())) {
                 return false;
-            } else {
-                prev_data = root.getData();
             }
-            isValidTree(root.getRight());
-        } else {
-            return true;
+            System.out.println("prev : " + prev + " , data : " + root.getData());
+            // 이전 데이터가 현재의 데이터보다 크면 이진 검색 트리가 아니다.
+            // inorder 방식으로 이진트리를 순회하면 오름차순으로 데이터를 읽게 된다.
+            if(prev != null && prev > root.getData()) {
+                return false;
+            }
+            prev = root.getData();
+            if(!searchInOrder(root.getRight())) {
+                return false;
+            }
         }
+        // 메소드 호출이 끝나면 true 리턴
         return true;
-    }
-
-    private int integer = 0;
-    public boolean isBalance(Node root) {
-        if(root != null) {
-            System.out.println(root.getData());
-            isBalance(root.getLeft());
-            isBalance(root.getRight());
-            integer++;
-        }
-        System.out.println("prev_data : "+ integer);
-        return false;
     }
 
 
     public static void main(String[] args) {
+        BinaryTreeSearch tree = new BinaryTreeSearch();
+        int [] arr = {1,2,3,4,5};
+        Node root = tree.makeTree(arr, 0, arr.length-1);
+        System.out.println(root.getRight().getRight().getData());
+//        root.getRight().getRight().setRight(new Node((0)));
+        System.out.println(tree.isBinaryTree(root));
 
-        Node root = new Node(3);
-        Node node1 = new Node(9);
-        Node node2 = new Node(20);
-        Node node4 = new Node(15);
-        Node node5 = new Node(7);
-        root.setLeft(node1);
-        root.setRight(node2);
-        node2.setLeft(node4);
-        node2.setRight(node5);
-
-        /*
-        Node root = new Node(1);
-        Node node1 = new Node(2);
-        root.setLeft(node1);
-        */
-        BinaryTreeSearch obj = new BinaryTreeSearch();
-
-        System.out.println(obj.isBalance(root));
     }
 
 }
