@@ -125,6 +125,7 @@ public class BinaryTreeSearch {
         System.out.println(root.getRight().getRight().getData());
 //        root.getRight().getRight().setRight(new Node((0)));
         System.out.println(tree.isBinaryTree(root));
+
     }
 
 }
