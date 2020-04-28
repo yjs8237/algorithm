@@ -125,7 +125,6 @@ public class Dikstra {
             proceedMap.put(node , node);
             node = findLowestCostNode(costMap);
         }
-
     }
 
     /**
