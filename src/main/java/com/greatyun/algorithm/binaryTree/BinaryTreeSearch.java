@@ -92,7 +92,6 @@ public class BinaryTreeSearch {
      */
     public boolean isBinaryTree(Node root) {
         return searchInOrder(root);
-
     }
 
     Integer prev;   // 이진검색 트리의 이전 값을 저장하는 Integer 객체

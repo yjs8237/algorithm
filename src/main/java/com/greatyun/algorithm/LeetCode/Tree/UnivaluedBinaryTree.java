@@ -39,16 +39,32 @@ public class UnivaluedBinaryTree {
         }
     }
 
+    /**
+     * 이진트리의 L 과 R 사이의 Value 를 Sum 해서 리턴
+     */
+    Integer result = 0;
+    public int rangeSumBST(TreeNode root, int L, int R) {
+        if(root != null) {
+            if(root.val >= L && root.val <= R) {
+                result += root.val;
+            }
+            rangeSumBST(root.left , L , R);
+            rangeSumBST(root.right , L , R);
+        }
+        return result;
+    }
+
     public static void main( String [] agrs) {
 
         TreeNode root = new TreeNode(1);
-        TreeNode node1 = new TreeNode(1);
-        TreeNode node2 = new TreeNode(2);
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(3);
 
         root.left = node1;
         root.right = node2;
         UnivaluedBinaryTree obj = new UnivaluedBinaryTree();
 
-        System.out.println(obj.isUnivalTree(root));
+//        System.out.println(obj.isUnivalTree(root));
+        System.out.println(obj.rangeSumBST(root , 1 ,2));
     }
 }
