@@ -57,9 +57,7 @@ public class Knapsack {
                     // 들어갈 수 없는 공간
                     arr[i][j] = arr[i-1][j];
                 }
-
             }
-
         }
 
         for (int i = 0; i < arr.length; i++) {
@@ -73,16 +71,15 @@ public class Knapsack {
     }
 
     public static void main(String[] args) {
-        Stuff s1 = new Stuff("A" , 1 , 1500);
+//        Stuff s1 = new Stuff("A" , 1 , 1500);
         Stuff s2 = new Stuff("B" , 3 , 1000);
-        Stuff s3 = new Stuff("C" , 5 , 2000);
+//        Stuff s3 = new Stuff("C" , 5 , 2000);
         List<Stuff> list = new ArrayList<>();
         list.add(s2);
-        list.add(s1);
-        list.add(s3);
+//        list.add(s1);
+//        list.add(s3);
         Knapsack obj = new Knapsack();
         obj.bestCost(list , 5);
-
 
     }
 }
