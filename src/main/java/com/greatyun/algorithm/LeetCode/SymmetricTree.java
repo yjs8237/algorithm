@@ -127,6 +127,7 @@ public class SymmetricTree {
     }
 
     public static void main(String[] args) {
+
         SymmetricTree obj = new SymmetricTree();
         TreeNode root = new TreeNode(1);
         TreeNode left_1 = new TreeNode(2);
@@ -142,7 +143,6 @@ public class SymmetricTree {
 
         right_1.left = null;
         right_1.right = treeNode4;
-
 
         System.out.println(obj.levelOrderBottom(root));
     }
