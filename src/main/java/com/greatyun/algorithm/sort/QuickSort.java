@@ -13,18 +13,21 @@ public class QuickSort {
         int pr = right;
         // Pivot 기준 데이터 정함
         int pivot = arr[(pl + pr)  / 2];
-        do {
 
+        while(pl <= pr) {
             while(arr[pl] < pivot) pl++;    // 기준 데이터 기준으로 값을 비교해서 기준데이터 보다 큰 값을 발견할 경우 stop
             while(arr[pr] > pivot) pr--;    // 기준 데이터 기준으로 값을 비교해서 기준데이터 보다 작은 값을 발견할 경우 stop
+
             if(pl <= pr) {
                 // 움직이는 index 가 서로 지나치지 않았다면 데이터를 체인지
-                swap(arr , pl++ , pr--);
+                swap(arr , pl , pr);
+                pl++;
+                pr--;
             }
-        } while (pl <= pr);
+        }
 
         if(left < pr) quickSort(arr , left , pr);
-        if(pl > right) quickSort(arr , pl , right);
+        if(pl < right) quickSort(arr , pl , right);
     }
 
     private void swap(int[] arr, int i, int i1) {
@@ -32,6 +35,13 @@ public class QuickSort {
         arr[i] = arr[i1];
         arr[i1] = t;
     }
+
+
+
+    public void quickSortV2(int [] arr , int left , int right) {
+
+    }
+
 
 
     /**
@@ -65,7 +75,13 @@ public class QuickSort {
 
     public static void main(String[] args) {
         QuickSort obj = new QuickSort();
-        int [] arr = {1,2,2,2,3,3,3,4,5};
-        System.out.println(obj.searchValue(arr , 3));
+        int [] arr = {10,8,2,2,3,3,3,4,5};
+        obj.quickSort(arr , 0 , arr.length-1);
+
+        for (int i = 0; i < arr.length; i++) {
+            System.out.print(" "  + arr[i]);
+        }
+
+//        System.out.println(obj.searchValue(arr , 3));
     }
 }
