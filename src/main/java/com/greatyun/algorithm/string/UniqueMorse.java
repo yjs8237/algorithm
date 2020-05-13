@@ -6,8 +6,7 @@ public class UniqueMorse {
 
     HashMap<String , String > morseMap = new HashMap<>();
     public int uniqueMorseRepresentations(String[] words) {
-
-
+        return 0;
     }
 
     public void setHash() {
