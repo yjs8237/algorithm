@@ -107,6 +107,43 @@ public class Inflearn_1 {
         System.out.println(builder.toString());
     }
 
+    class Element {
+        int index;
+        int val;
+        public Element(int index , int va) {
+            this.index = index;
+            this.val = va;
+        }
+    }
+    
+    public void reverse_suyul(int [] arr) {
+
+        int [] ret = new int[arr.length];
+        for (int i = 0; i < ret.length; i++) {
+            ret[i] = -1;
+        }
+
+        int len = arr.length;
+
+        for (int i = 0; i < arr.length; i++) {
+            int num = arr[i];
+            int index = 0;
+            int count = 0;
+            while(true) {
+                if(ret[index] == -1 && count == num) {
+                    ret[index] = i+1;
+                    break;
+                } else if(ret[index] == -1){
+                    count++;
+                }
+                index++;
+            }
+        }
+        for (int i = 0; i < ret.length; i++) {
+            System.out.print(ret[i] + " ");
+        }
+    }
+
     public static void main(String[] args) {
         PriorityQueue<Time> queue = new PriorityQueue<>((a , b) -> a.end > b.end ? 1 : -1);
         Time time1 = new Time(172, 67);
@@ -119,11 +156,11 @@ public class Inflearn_1 {
         Inflearn_1 obj = new Inflearn_1();
         obj.solution(list);
 
-        int [] arr = {2,4,5,1,3};
+        int [] arr = {2,3,1,1,0,0};
         int N = 5;
         int M = 140;
 //        obj.test3(N , M , arr);
-        obj.test3(arr);
+        obj.reverse_suyul(arr);
     }
 
 }
