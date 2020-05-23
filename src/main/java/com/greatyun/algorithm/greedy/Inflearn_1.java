@@ -115,7 +115,7 @@ public class Inflearn_1 {
             this.val = va;
         }
     }
-    
+
     public void reverse_suyul(int [] arr) {
 
         int [] ret = new int[arr.length];
