@@ -1,6 +1,9 @@
 package com.greatyun.algorithm.string;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class UniqueMorse {
 
@@ -38,12 +41,21 @@ public class UniqueMorse {
         morseMap.put("y" , arr[0]);
         morseMap.put("z" , arr[0]);
 
+        StringBuilder sb = new StringBuilder();
+        HashSet<Integer> hashSet = new HashSet<>();
+        
+        HashMap<Integer , Integer> map = new HashMap<>();
+        Iterator iter = map.keySet().iterator();
+        while(iter.hasNext()) {
+            Integer key = (Integer) iter.next();
+            System.out.print(" " + map.get(key));
+        }
     }
 
 
     public static void main(String[] args) {
 
-
+        LinkedList<String> list = new LinkedList<>();
 
         UniqueMorse obj = new UniqueMorse();
         String [] words = {"gin", "zen", "gig", "msg"};
