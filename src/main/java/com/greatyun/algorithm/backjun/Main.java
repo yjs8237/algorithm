@@ -18,22 +18,20 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Main main = new Main();
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String count = bufferedReader.readLine();
-        int [] arr = new int[123];
-        for (int i = 97; i < arr.length; i++) {
-            arr[i] = -1;
-        }
-        for (int i = 0; i < count.length(); i++) {
-            String str = count.substring(i , i+1);
-            char c = str.charAt(0);
-            if(arr[c] == -1) {
-                arr[c] = i;
+        String first = bufferedReader.readLine();
+        String second = bufferedReader.readLine();
+
+        int secodelen = second.length();
+
+        int ret = 0;
+        for (int i = 0; i < first.length(); i+=secodelen) {
+            if(first.length() >= i+secodelen) {
+                String target = first.substring(i , i + secodelen);
+                if(target.equals(second)) {
+                    ret++;
+                }
             }
         }
-
-        for (int i = 97; i < arr.length; i++) {
-            System.out.println(arr[i]);
-        }
-
+        System.out.println(ret);
     }
 }
