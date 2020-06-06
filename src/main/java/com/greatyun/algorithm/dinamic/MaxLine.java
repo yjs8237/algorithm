@@ -25,9 +25,6 @@ public class MaxLine {
         int ret = 0;
         for (int i = 0; i < arr_1.length; i++) {
             for (int j = 0; j < arr_2.length; j++) {
-
-
-
                 if(arr_1[i] == arr_2[j]) {
                     if(i == 0 || d[i-1] < j ) {
                         System.out.println("j : " + j);
