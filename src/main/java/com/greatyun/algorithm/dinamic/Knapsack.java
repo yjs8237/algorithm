@@ -70,6 +70,42 @@ public class Knapsack {
         return 0;
     }
 
+    public void solution (int [][] arr , int amount) {
+
+        int [][] d = new int [arr.length+1][amount+1];
+
+        for (int i = 1; i < d.length; i++) {
+
+            for (int j = 1; j < d[0].length; j++) {
+
+                if(arr[i-1][0] == j) {
+                    // 가방 크기가 딱 맞는 경우
+                    // 나의 가치와 이전 메모라이즈 최대 가치와 비교하여 최고의 가치를 기억한다.
+                    d[i][j] = Math.max(d[i-1][j] , arr[i-1][1]);
+                } else if(arr[i-1][0] < j) {
+                    // 물건을 담고 가방 크기가 남은 경우
+                    int myValue = arr[i-1][1];
+                    int anotherValue = d[i][j-arr[i-1][0]];
+                    d[i][j] = Math.max((myValue + anotherValue) , d[i-1][j]);
+                } else {
+                    // 물건의 크기가 더 큰 경우
+                    d[i][j] = d[i-1][j];
+                }
+
+
+            }
+        }
+
+        for (int i = 0; i < d.length; i++) {
+            for (int j = 0; j < d[0].length; j++) {
+                System.out.print(d[i][j] + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+
     public static void main(String[] args) {
 //        Stuff s1 = new Stuff("A" , 1 , 1500);
         Stuff s2 = new Stuff("B" , 3 , 1000);
@@ -79,7 +115,8 @@ public class Knapsack {
 //        list.add(s1);
 //        list.add(s3);
         Knapsack obj = new Knapsack();
-        obj.bestCost(list , 5);
-
+        //obj.bestCost(list , 5);
+        int [][] arr = {{4,11} , {5,12} , {3,8} , {6,14} , {4,8}};
+        obj.solution(arr , 17);
     }
 }
