@@ -1,6 +1,7 @@
 package com.greatyun.algorithm.dinamic;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Knapsack {
@@ -102,7 +103,35 @@ public class Knapsack {
             }
             System.out.println();
         }
+        String temp = "";
+    }
 
+    public int solution(int[] d, int budget) {
+        int answer = 0;
+
+        int [][] memo = new int[d.length+1][budget+1];
+
+        System.out.println(memo[0].length);
+
+        for(int i=1; i < memo.length; i++) {
+            for(int j=1; j < memo[0].length; j++) {
+                System.out.println("i : "+ i + " , j : " + j);
+                if(j == d[i-1]) {
+                    // 딱 맞을 경우
+                    memo[i][j] = Math.max(memo[i-1][j] , d[i-1]);
+                } else if(j > d[i-1]) {
+                    // 들어가고 남을 경우
+                    int myValue = d[i-1];
+                    int bestPrevValue = memo[i][j - myValue];
+
+                    memo[i][j] = Math.max(memo[i-1][j] , (myValue + bestPrevValue));
+                } else {
+                    // 모자를 경우
+                    memo[i][j] = memo[i-1][j];
+                }
+            }
+        }
+        return answer;
     }
 
 
@@ -117,6 +146,14 @@ public class Knapsack {
         Knapsack obj = new Knapsack();
         //obj.bestCost(list , 5);
         int [][] arr = {{4,11} , {5,12} , {3,8} , {6,14} , {4,8}};
-        obj.solution(arr , 17);
+
+
+        String temp = "1234";
+        StringBuilder builder = new StringBuilder();
+        builder.reverse()
+
+        int [] d = {1,3,2,4,5};
+        obj.solution(d , 9);
+//        obj.solution(arr , 17);
     }
 }
