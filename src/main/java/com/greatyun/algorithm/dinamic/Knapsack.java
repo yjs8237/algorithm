@@ -150,7 +150,7 @@ public class Knapsack {
 
         String temp = "1234";
         StringBuilder builder = new StringBuilder();
-        builder.reverse()
+
 
         int [] d = {1,3,2,4,5};
         obj.solution(d , 9);
