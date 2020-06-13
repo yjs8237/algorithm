@@ -44,7 +44,7 @@ public class BinaryTreeSearch {
         node.setLeft(makeTree(a , start , mid - 1));
         node.setRight(makeTree(a , mid +1  , end));
         return node;
-    }
+    }   
 
 
     public void inorder(Node node) {
