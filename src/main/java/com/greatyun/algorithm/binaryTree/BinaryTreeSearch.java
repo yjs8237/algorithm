@@ -52,6 +52,8 @@ public class BinaryTreeSearch {
             log.info("node data[" + node.getData() + "]");
             inorder(node.getLeft());
             inorder(node.getRight());
+
+
         }
     }
 
