@@ -38,7 +38,6 @@ public class BubunJIphap {
                 }
             }
             ret.add(list);
-//            System.out.println();
             return;
         }
 

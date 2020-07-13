@@ -56,7 +56,7 @@ public class SunYul {
 
     public static void main(String[] args) {
         int [] arr = {1,2,3};
-        int number = 4;
+        int number = 3;
         SunYul.solution(arr , number);
     }
 }
