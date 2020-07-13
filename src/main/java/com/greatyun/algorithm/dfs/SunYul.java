@@ -58,5 +58,6 @@ public class SunYul {
         int [] arr = {1,2,3};
         int number = 3;
         SunYul.solution(arr , number);
+
     }
 }

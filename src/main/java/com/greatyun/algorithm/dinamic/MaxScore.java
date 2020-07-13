@@ -13,7 +13,6 @@ public class MaxScore {
          * 중복 탐색을 안하게 된다.....
          */
 
-
         int [] d = new int[maxTime + 1];
 
         for (int i = 0; i < arr.length; i++) {
