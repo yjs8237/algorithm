@@ -1,7 +1,9 @@
 package com.greatyun.algorithm.dfs;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 순열 구하기
@@ -18,7 +20,8 @@ public class SunYul {
 
         List<List<Integer>> ret = new ArrayList<>();
         int [] checkArr = new int[number];
-        dfs(arr , ret , checkArr,  0 , number);
+        Set<Integer> set = new HashSet<>();
+        dfs(arr , ret , checkArr,  0 , number );
 
         for (int i = 0; i < ret.size(); i++) {
             List<Integer> integers = ret.get(i);
@@ -49,8 +52,11 @@ public class SunYul {
         }
 
         for (int i = 0; i < arr.length; i++) {
+
             checkArr[level] = arr[i];
-            dfs(arr , ret , checkArr , level + 1 , number);
+
+            dfs(arr , ret , checkArr , level + 1 , number  );
+
         }
     }
 
