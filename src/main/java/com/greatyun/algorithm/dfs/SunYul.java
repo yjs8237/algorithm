@@ -52,11 +52,8 @@ public class SunYul {
         }
 
         for (int i = 0; i < arr.length; i++) {
-
             checkArr[level] = arr[i];
-
             dfs(arr , ret , checkArr , level + 1 , number  );
-
         }
     }
 
