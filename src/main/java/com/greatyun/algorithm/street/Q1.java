@@ -6,11 +6,6 @@ import java.util.Set;
 
 public class Q1 {
 
-
-
-
-
-
     public int s2(int [] A , int [] B) {
         int n = A.length;
         int m = B.length;
